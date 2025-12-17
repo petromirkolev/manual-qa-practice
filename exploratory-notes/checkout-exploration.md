@@ -4,26 +4,34 @@
 
 - Browser: Chrome Version 143.0.7499.147 (Official Build) (arm64)
 - OS: macOS 15.7.1
-- Date: 2025-17-12
-
-“After correcting invalid email, error message disappears only after clicking outside the field.”
-
-## Observations
-
-- Checkout page passes basic/common test cases but fails on multiple edge cases.
+- URL: https://shop.polymer-project.org/checkout
+- Date: 2025-12-17
 
 ## Validation & UX
 
-- "Invalid Phone Number" error message disappears when clicking in the phone number box which makes it impossible to tell if the provided phone number is valid.
-- "City" field accepts numerical only values.
-- Credit cards with expiry date before the current date are accepted.
-- "State/Province" field accepts numerical only values.
-- "Address" field accepts numerical only values.
-- "Address" field accepts only >= 5 symbols.
-- "Cardholder name" accepts numerical only values.
-- Checkout page layout breaks in screen resolution < 150px wide.
-- Email field accepts emails in the following format: latinChars@cyrilicChars.
+- After correcting an invalid email, the error message disappears only after clicking outside the field.
+- The phone number validation error message (“Invalid phone number”) disappears when clicking inside the field, making it unclear whether the entered value is now valid.
+- City field accepts numeric-only values.
+- State/Province field accepts numeric-only values.
+- Cardholder name field accepts numeric-only values.
+- Credit cards with an expiry date before the current date are accepted.
+- Email field accepts addresses in the format `latinChars@cyrillicChars`.
+
+## Input Handling
+
+- Address field accepts numeric-only values.
+- Address field enforces a minimum length of 5 characters.
+
+## Visual / Responsiveness
+
+- Checkout page layout breaks at extremely small viewport widths (below ~150px).
 
 ## State & Flow
 
-## Open Questions
+- No unexpected crashes observed during form interaction.
+- Refreshing the page clears all entered data without warning.
+
+## Open Questions / Risks
+
+- Is clearing form data on page refresh expected behavior?
+- Are numeric-only values for location and name fields acceptable per requirements?
