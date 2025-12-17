@@ -14,6 +14,8 @@
 
 - Checkout page displays a "Your cart is empty" message and provides navigation back to shopping.
 
+---
+
 **ID**: TC-CHK-002
 
 **Title**: Checkout submits with valid required fields
@@ -44,6 +46,8 @@
 - Order is accepted (success state, confirmation message, or redirect to confirmation screen).
 - No validation errors shown for filled fields.
 
+---
+
 **ID**: TC-CHK-003
 
 **Title**: Submission blocked when a required field is missing
@@ -67,6 +71,8 @@
 - Missing field is highlighted and an error message is shown.
 - Error message clearly indicates that the phone number field is required.
 
+---
+
 **ID**: TC-CHK-004
 
 **Title**: Format validation (email) rejects invalid email
@@ -87,6 +93,8 @@
 - Submission is blocked.
 - Email field shows validation error.
 - Error message indicates invalid email format.
+
+---
 
 **ID**: TC-CHK-005
 
