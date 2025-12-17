@@ -59,3 +59,33 @@
 **Result**: PASS
 
 **Notes**: Submission successful.
+
+---
+
+**Test Case ID**: TC-CHK-006
+
+**Description**: Order submission is blocked with "Invalid email" error.
+
+**Result**: FAIL - see bug-report checkout-email-missing-shows-invalid.md
+
+**Notes**: Submission blocked.
+
+---
+
+**Test Case ID**: TC-CHK-008
+
+**Description**: Order submission is blocked with "Invalid card number" error.
+
+**Result**: PASS
+
+**Notes**: Submission blocked.
+
+---
+
+**Test Case ID**: TC-CHK-015
+
+**Description**: Form fields are cleared on refresh and items added to cart remain intact.
+
+**Result**: PASS
+
+**Notes**: Submission blocked.
