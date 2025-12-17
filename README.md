@@ -14,26 +14,33 @@ The goal of this repository is to demonstrate:
 
 ## Repository Structure
 
-manual-qa-portfolio/
-│
-├── README.md
-│
-├── test-plans/
-│ └── <feature>-test-plan.md
-│
-├── test-cases/
-│ └── <feature>-test-cases.md
-│
-├── bug-reports/
-│ ├── <bug-title-1>.md
-│ ├── <bug-title-2>.md
-│
-├── api-testing/
-│ ├── api-test-cases.md
-│ └── api-bug-reports.md
-│
-└── exploratory-notes/
-└── <feature>-exploration-notes.md
+## manual-qa-portfolio/
+
+## ├── README.md
+
+## ├── test-plans/
+
+## │ └── <feature>-test-plan.md
+
+## ├── test-cases/
+
+## │ └── <feature>-test-cases.md
+
+## ├── bug-reports/
+
+## │ ├── <bug-title-1>.md
+
+## │ ├── <bug-title-2>.md
+
+## ├── api-testing/
+
+## │ ├── api-test-cases.md
+
+## │ └── api-bug-reports.md
+
+## └── exploratory-notes/
+
+## └── <feature>-exploration-notes.md
 
 ---
 
