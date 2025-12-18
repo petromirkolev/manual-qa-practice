@@ -58,7 +58,14 @@
 
 **Result**: PASS
 
-**Notes**: Response code 201 Created. Body - body + userId.
+**Expected Result includes**:
+
+- title === "hello"
+- body === "world"
+- userId === 1
+- id exists and is numeric
+
+**Notes**: Response code 201 Created. Response echoes body/title/usedId; id present.
 
 ---
 
