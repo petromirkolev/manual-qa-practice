@@ -1,0 +1,154 @@
+**ID**: TC-JSP-001
+
+**Title**: GET All posts
+
+**Method:** GET
+
+**Endpoint:** https://jsonplaceholder.typicode.com/
+
+**Preconditions:** API is available.
+
+**Steps**:
+
+1. Open Postman.
+2. Submit a GET request to endpoint.
+
+**Expected result**:
+
+- Status: 200 OK
+- Body: array of posts
+
+---
+
+**ID**: TC-JSP-002
+
+**Title**: GET One post
+
+**Method:** GET
+
+**Endpoint:** /posts/1
+
+**Preconditions:** API is available.
+
+**Steps**:
+
+1. Open Postman.
+2. Submit a GET request to endpoint.
+
+**Expected result**:
+
+- Status: 200 OK
+- Body: one object
+
+---
+
+**ID**: TC-JSP-003
+
+**Title**: GET One non-existing post
+
+**Method:** GET
+
+**Endpoint:** /posts/9999
+
+**Preconditions:** API is available.
+
+**Steps**:
+
+1. Open Postman.
+2. Submit a GET request to endpoint.
+
+**Expected result**:
+
+- Status: 404 Not Found
+- Body: empty object
+
+---
+
+**ID**: TC-JSP-POST-001
+
+**Title**: Happy path create post
+
+**Method:** POST
+
+**Endpoint:** {{baseUrl}}/posts
+
+**Preconditions:** API is available.
+
+**Steps**:
+
+1. Open Postman.
+2. Submit a POST request to endpoint with the following parameters:
+
+- Headers: Content-Type: application/json
+- Body:
+  {
+  "title": "hello",
+  "body": "world",
+  "userId": 1
+  }
+
+**Expected result**:
+
+- Status: 201 Created
+- Body: Object containing body + userId.
+
+---
+
+**ID**: TC-JSP-POST-002
+
+**Title**: Missing required field
+
+**Method:** POST
+
+**Endpoint:** {{baseUrl}}/posts
+
+**Preconditions:** API is available.
+
+**Steps**:
+
+1. Open Postman.
+2. Submit a POST request to endpoint with the following parameters:
+
+- Headers: Content-Type: application/json
+- Body:
+  {
+  "body": "world",
+  "userId": 1
+  }
+
+**Expected result**:
+
+- Status: 400 or 422 in real API. 201 Created in mock API.
+- Body: Empty in real API. Object containing body + userId in mock API.
+
+---
+
+**ID**: TC-JSP-POST-003
+
+**Title**: Wrong data type
+
+**Method:** POST
+
+**Endpoint:** {{baseUrl}}/posts
+
+**Preconditions:** API is available.
+
+**Steps**:
+
+1. Open Postman.
+2. Submit a POST request to endpoint with the following parameters:
+
+- Headers: Content-Type: application/json
+- Body:
+  {
+  "title": "hello",
+  "body": "world",
+  "userId": "abc"
+  }
+
+**Expected result**:
+
+- Status: 400 or 422 in real API. 201 Created in mock API.
+- Body: Empty in real API. Object containing body + userId in mock API.
+
+---
