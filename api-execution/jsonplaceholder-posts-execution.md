@@ -41,3 +41,33 @@
 **Notes**: Response code 404 Not Found. Body - empty object.
 
 ---
+
+**Test Case ID**: TC-JSP-POST-001
+
+**Description**: Happy path create post
+
+**Result**: PASS
+
+**Notes**: Response code 201 Created. Body - body + userId.
+
+---
+
+**Test Case ID**: TC-JSP-POST-002
+
+**Description**: Missing required field
+
+**Result**: PASS
+
+**Notes**: Response code 201 Created. Body - body + userId.
+
+---
+
+**Test Case ID**: TC-JSP-POST-003
+
+**Description**: Wrong data type
+
+**Result**: PASS
+
+**Notes**: Response code 201 Created. Body - body + userId.
+
+---
