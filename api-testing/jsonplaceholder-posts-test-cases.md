@@ -90,7 +90,8 @@
 **Expected result**:
 
 - Status: 201 Created
-- Body: Object containing body + userId.
+- Body: Object contains title, body.
+- Body: Oblect includes ID (number).
 
 ---
 
@@ -116,10 +117,13 @@
   "userId": 1
   }
 
-**Expected result**:
+**Expected result (real API)**:
 
-- Status: 400 or 422 in real API. 201 Created in mock API.
-- Body: Empty in real API. Object containing body + userId in mock API.
+- 400/422 with validation error details.
+
+**Expected result (JSONPlaceholder mock)**:
+
+- 201 Created (no validation enforced), response echoes payload + id.
 
 ---
 
@@ -146,9 +150,12 @@
   "userId": "abc"
   }
 
-**Expected result**:
+**Expected result (real API)**:
 
-- Status: 400 or 422 in real API. 201 Created in mock API.
-- Body: Empty in real API. Object containing body + userId in mock API.
+- 400/422 with validation error details.
+
+**Expected result (JSONPlaceholder mock)**:
+
+- 201 Created (no validation enforced), response echoes payload + id.
 
 ---
