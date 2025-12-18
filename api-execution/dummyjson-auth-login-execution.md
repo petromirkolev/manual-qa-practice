@@ -18,7 +18,7 @@
 
 **Result**: PASS
 
-**Notes**: Response code 200 OK. Body contains accessToken and refreshToken.
+**Notes**: Response code: 200 OK. Body contains accessToken and refreshToken.
 
 ---
 
@@ -28,7 +28,7 @@
 
 **Result**: PASS
 
-**Notes**: Response code 400 Bad Request. Body contains error message "Username and password required".
+**Notes**: Response code: 400 Bad Request. Body contains error message "Username and password required".
 
 ---
 
@@ -38,6 +38,6 @@
 
 **Result**: PASS
 
-**Notes**: Response code 400 Bad Request. Body contains error message "Invalid credentials".
+**Notes**: Response code: 400 Bad Request. Body contains error message "Invalid credentials".
 
 ---
