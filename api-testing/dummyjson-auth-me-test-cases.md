@@ -6,11 +6,14 @@
 
 **Endpoint:** https://dummyjson.com/auth/me
 
-**Preconditions:** API is available.
+**Preconditions:**
+
+- API is available.
+- {{accessToken}} is obtained from TC-DJ-001 login response
 
 **Test data**:
 
-- Headers: Authentication: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3NjYwNDc0MDksImV4cCI6MTc2NjA1MTAwOX0.DscXhOBwReBCOtinIrsneSaTvnHi8q2hSz70M7Ayx0I
+- Headers: Authentication: Bearer {{accessToken}}
 
 **Steps**:
 
