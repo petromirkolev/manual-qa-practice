@@ -48,7 +48,7 @@
 
 **Result**: PASS
 
-**Notes**: Response code 201 Created. Body - body + userId.
+**Notes**: Response code 201 Created. Response echoes body/title/usedId; id present.
 
 ---
 
@@ -75,6 +75,6 @@
 
 **Result**: PASS
 
-**Notes**: Response code 201 Created. Body - body + userId.
+**Notes**: Response code 201 Created. Response echoes body/title/usedId; id present.
 
 ---
