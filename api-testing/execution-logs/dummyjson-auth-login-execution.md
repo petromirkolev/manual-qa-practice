@@ -1,4 +1,4 @@
-# DummyJson Test Execution Log
+# DummyJSON Test Execution Log
 
 ## Environment
 
@@ -18,7 +18,7 @@
 
 **Result**: PASS
 
-**Notes**: Response code: 200 OK. Body contains accessToken and refreshToken.
+**Notes**: Response code: 200 OK. Body contains accessToken and refreshToken. Token fields present.
 
 ---
 

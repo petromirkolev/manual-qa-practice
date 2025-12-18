@@ -1,4 +1,4 @@
-# DummyJson Test Execution Log
+# DummyJSON Test Execution Log
 
 ## Environment
 
@@ -21,7 +21,7 @@
 **Notes**:
 
 - Status: 200 OK
-- Body: User object (id/username/etc.)
+- Body: User object: id: number; username: string; etc.
 
 ---
 

@@ -28,7 +28,7 @@
 
 **Result**: PASS
 
-**Notes**: Response code 200 OK. Body - one object.
+**Notes**: Response code 200 OK. Body - one post object.
 
 ---
 
