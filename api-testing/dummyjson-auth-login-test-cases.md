@@ -25,7 +25,7 @@
 **Expected result**:
 
 - Status: 200 OK
-- Body: Contains accessToken and refreshToken.
+- Body: Contains accessToken and refreshToken (and user fields). Token fields present.
 
 ---
 
@@ -44,7 +44,7 @@
 - Headers: Content-Type: application/json
 - Body:
   {
-  "username": "emilys",
+  "username": "emilys"
   }
 
 **Steps**:
