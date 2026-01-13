@@ -1,6 +1,6 @@
 # Manual QA Portfolio
 
-This repository contains hands-on manual QA practice artifacts created during structured training.
+This repository contains hands-on manual QA practice artifacts created during training.
 
 ## What this repository demonstrates
 
@@ -12,8 +12,9 @@ This repository contains hands-on manual QA practice artifacts created during st
 
 ## Structure
 
-- manual-testing/ — UI test cases, execution logs, bug reports
-- api-testing/ — API test cases, execution logs, Postman collections
-- test-plans/ — High-level test planning examples
+- projects/ — Odin Projects UI test cases, plans and bug reports
+- training-manual-testing/ — Training UI test cases, execution logs, bug reports
+- training-api-testing/ — Training API test cases, execution logs, Postman collections
+- training-test-plans/ — Training high-level test planning examples
 
 All artifacts are written manually and executed against demo applications and public APIs.
