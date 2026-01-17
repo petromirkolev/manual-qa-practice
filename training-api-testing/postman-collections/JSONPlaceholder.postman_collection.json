@@ -1,0 +1,361 @@
+{
+  "info": {
+    "_postman_id": "2cab11d7-0fb2-4727-b5c3-7b230da8ae6c",
+    "name": "JSONPlaceholder",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14026585"
+  },
+  "item": [
+    {
+      "name": "Get all posts",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const jsonData = pm.response.json();",
+              "",
+              "// Check response code",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Check if body contains posts",
+              "pm.test(\"Body contains array of posts\", function () {",
+              "    pm.expect(jsonData.length).to.be.greaterThan(0);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/posts",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get one post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const jsonData = pm.response.json();",
+              "const post = pm.collectionVariables.get(\"post\");",
+              "",
+              "// Check response code",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Check if post matches requested post",
+              "pm.test(\"Post ID matches requested ID\", function () {",
+              "    pm.expect(jsonData.id).to.eql(Number(post));",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/posts/{{post}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "posts",
+            "{{post}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get non-existing post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const jsonData = pm.response.json();",
+              "",
+              "// Check response code",
+              "pm.test(\"Status code is 404\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "",
+              "// Check if body is an empty object",
+              "pm.test(\"Response body is an empty object\", function () {",
+              "    pm.expect(jsonData).to.deep.equal({});",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/posts/9999",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "posts",
+            "9999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Response status is 201 Created",
+              "pm.test(\"Status code is 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "// Response body contains the correct title",
+              "pm.test(\"Response body contains the correct title\", function () {",
+              "    pm.expect(pm.response.json().title).to.eql(\"hello\");",
+              "});",
+              "",
+              "// Response body contains the correct body",
+              "pm.test(\"Response body contains the correct body\", function () {",
+              "    pm.expect(pm.response.json().body).to.eql(\"world\");",
+              "});",
+              "",
+              "// Response userID is 1",
+              "pm.test(\"Response userId is 1\", function () {",
+              "    pm.expect(pm.response.json().userId).to.eql(1)",
+              "});",
+              "",
+              "// Response id is greater than 100  ",
+              "pm.test(\"Response id is greater than 100\", function () {",
+              "    pm.expect(pm.response.json().id).to.be.greaterThan(100);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": " {\n  \"title\": \"hello\",\n  \"body\": \"world\",\n  \"userId\": 1\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/posts",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create post with missing field",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Response status is 201 Created",
+              "pm.test(\"Status code is 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "// Response body contains the correct body",
+              "pm.test(\"Response body contains the correct body\", function () {",
+              "    pm.expect(pm.response.json().body).to.eql(\"world\");",
+              "});",
+              "",
+              "// Response userID is 1",
+              "pm.test(\"Response userId is 1\", function () {",
+              "    pm.expect(pm.response.json().userId).to.eql(1)",
+              "});",
+              "",
+              "// Response id is greater than 100  ",
+              "pm.test(\"Response id is greater than 100\", function () {",
+              "    pm.expect(pm.response.json().id).to.be.greaterThan(100);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"body\": \"world\",\n  \"userId\": 1\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/posts",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create post with wrong data type",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Response status is 201 Created",
+              "pm.test(\"Status code is 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "// Response body contains the correct title",
+              "pm.test(\"Response body contains the correct title\", function () {",
+              "    pm.expect(pm.response.json().title).to.eql(\"hello\");",
+              "});",
+              "",
+              "// Response body contains the correct body",
+              "pm.test(\"Response body contains the correct body\", function () {",
+              "    pm.expect(pm.response.json().body).to.eql(\"world\");",
+              "});",
+              "",
+              "// Response id is greater than 100  ",
+              "pm.test(\"Response id is greater than 100\", function () {",
+              "    pm.expect(pm.response.json().id).to.be.greaterThan(100);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"hello\",\n  \"body\": \"world\",\n  \"userId\": \"abc\"\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/posts",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    },
+    {
+      "key": "post",
+      "value": ""
+    }
+  ]
+}

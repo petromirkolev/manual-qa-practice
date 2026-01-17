@@ -1,13 +1,8 @@
 **ID**: TC-JSP-001
-
 **Title**: GET All posts
-
 **Method:** GET
-
-**Endpoint:** https://jsonplaceholder.typicode.com/
-
+**Endpoint:** /posts
 **Preconditions:** API is available.
-
 **Steps**:
 
 1. Open Postman.
@@ -21,15 +16,10 @@
 ---
 
 **ID**: TC-JSP-002
-
 **Title**: GET One post
-
 **Method:** GET
-
 **Endpoint:** /posts/1
-
 **Preconditions:** API is available.
-
 **Steps**:
 
 1. Open Postman.
@@ -43,15 +33,10 @@
 ---
 
 **ID**: TC-JSP-003
-
 **Title**: GET One non-existing post
-
 **Method:** GET
-
 **Endpoint:** /posts/9999
-
 **Preconditions:** API is available.
-
 **Steps**:
 
 1. Open Postman.
@@ -65,15 +50,10 @@
 ---
 
 **ID**: TC-JSP-POST-001
-
 **Title**: Happy path create post
-
 **Method:** POST
-
-**Endpoint:** {{baseUrl}}/posts
-
+**Endpoint:** /posts
 **Preconditions:** API is available.
-
 **Steps**:
 
 1. Open Postman.
@@ -96,15 +76,10 @@
 ---
 
 **ID**: TC-JSP-POST-002
-
 **Title**: Missing required field
-
 **Method:** POST
-
-**Endpoint:** {{baseUrl}}/posts
-
+**Endpoint:** /posts
 **Preconditions:** API is available.
-
 **Steps**:
 
 1. Open Postman.
@@ -128,15 +103,10 @@
 ---
 
 **ID**: TC-JSP-POST-003
-
 **Title**: Wrong data type
-
 **Method:** POST
-
-**Endpoint:** {{baseUrl}}/posts
-
+**Endpoint:** /posts
 **Preconditions:** API is available.
-
 **Steps**:
 
 1. Open Postman.
