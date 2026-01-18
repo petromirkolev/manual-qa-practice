@@ -4,7 +4,7 @@
 
 ### TC-API-GEO-001 – Valid city returns at least one result
 
-**Endpoint:** `GET /v1/geocoding`
+**Endpoint:** `GET /v1/search`
 
 **Purpose:** Verify that a valid city name returns a non-empty result set.
 
@@ -16,7 +16,7 @@
 **Request:**
 
 - Method: GET
-- URL: `/v1/geocoding?name=Plovdiv&count=1`
+- URL: `/v1/search?name=Plovdiv&count=1`
 
 **Steps:**
 
@@ -34,7 +34,7 @@
 
 ### TC-API-GEO-002 – Unknown/invalid city returns no results
 
-**Endpoint:** `GET /v1/geocoding`
+**Endpoint:** `GET /v1/search`
 
 **Purpose:** Verify behavior when an unknown city is requested.
 
@@ -45,7 +45,7 @@
 **Request:**
 
 - Method: GET
-- URL: `/v1/geocoding?name=asdkjashdkjashd&count=5`
+- URL: `/v1/search?name=asdkjashdkjashd&count=5`
 
 **Steps:**
 
@@ -61,7 +61,7 @@
 
 ### TC-API-GEO-003 – Missing required parameter `name`
 
-**Endpoint:** `GET /v1/geocoding`
+**Endpoint:** `GET /v1/search`
 
 **Purpose:** Verify API validation when required parameter is missing.
 
@@ -72,7 +72,7 @@
 **Request:**
 
 - Method: GET
-- URL: `/v1/geocoding?count=1` (no `name` query param)
+- URL: `/v1/search?count=1` (no `name` query param)
 
 **Steps:**
 
@@ -85,7 +85,7 @@
 
 ### TC-API-GEO-004 – Multiple results when city name is ambiguous
 
-**Endpoint:** `GET /v1/geocoding`
+**Endpoint:** `GET /v1/search`
 
 **Purpose:** Verify that ambiguous city names return multiple candidates.
 
@@ -97,7 +97,7 @@
 **Request:**
 
 - Method: GET
-- URL: `/v1/geocoding?name=Springfield&count=10`
+- URL: `/v1/search?name=Springfield&count=10`
 
 **Steps:**
 
