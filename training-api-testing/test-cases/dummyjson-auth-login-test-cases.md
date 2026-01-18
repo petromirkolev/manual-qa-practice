@@ -4,7 +4,7 @@
 
 **Method:** POST
 
-**Endpoint:** https://dummyjson.com/auth/login
+**Endpoint:** /auth/login
 
 **Preconditions:** API is available.
 
@@ -35,7 +35,7 @@
 
 **Method:** POST
 
-**Endpoint:** https://dummyjson.com/auth/login
+**Endpoint:** /auth/login
 
 **Preconditions:** API is available.
 
@@ -65,7 +65,7 @@
 
 **Method:** POST
 
-**Endpoint:** https://dummyjson.com/auth/login
+**Endpoint:** /auth/login
 
 **Preconditions:** API is available.
 

@@ -4,7 +4,7 @@
 
 - OS: macOS 15.7.1
 - Tool: Postman
-- URL: https://dummyjson.com/auth/me
+- URL: https://dummyjson.com/
 
 ## Execution Date
 

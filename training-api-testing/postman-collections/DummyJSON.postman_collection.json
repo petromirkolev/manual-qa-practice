@@ -1,0 +1,384 @@
+{
+  "info": {
+    "_postman_id": "4650585a-7a5d-42a7-8de7-a9205ea18714",
+    "name": "DummyJSON",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14026585"
+  },
+  "item": [
+    {
+      "name": "Login with valid credentials",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Response code is 200 OK",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Response contains accessToken",
+              "pm.test(\"Response contains accessToken\", function () {",
+              "    pm.response.to.have.jsonBody(\"accessToken\");",
+              "});",
+              "",
+              "// Response contains refreshToken",
+              "pm.test(\"Response contains refreshToken\", function () {",
+              "    pm.response.to.have.jsonBody(\"refreshToken\");",
+              "});",
+              "",
+              "// Set accessToken and refreshToken on login",
+              "pm.collectionVariables.set(\"accessToken\", pm.response.json().accessToken);",
+              "pm.collectionVariables.set(\"refreshToken\", pm.response.json().refreshToken);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"emilys\",\n  \"password\": \"emilyspass\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login with missing password",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Response code is 200 OK",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Response contains error message",
+              "pm.test(\"Response contains error message\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"Username and password required\");",
+              "});",
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"emilys\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login with invalid password",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Response code is 200 OK",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Response contains error message",
+              "pm.test(\"Response contains error message\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"Invalid credentials\");",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"emilys\",\n  \"password\": \"1234\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET current user (authorized)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Response code is 200 OK",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Response body contains user object",
+              "pm.test(\"Response body contains user object\", function () {",
+              "    pm.response.to.have.jsonBody('id');",
+              "    pm.response.to.have.jsonBody('firstName');",
+              "    pm.response.to.have.jsonBody('lastName');",
+              "    pm.response.to.have.jsonBody('email');",
+              "    pm.response.to.have.jsonBody('phone');",
+              "    pm.response.to.have.jsonBody('username');",
+              "    pm.response.to.have.jsonBody('password');",
+              "    pm.response.to.have.jsonBody('birthDate');",
+              "    pm.response.to.have.jsonBody('image');",
+              "    pm.response.to.have.jsonBody('bloodGroup');",
+              "    pm.response.to.have.jsonBody('height');",
+              "    pm.response.to.have.jsonBody('weight');",
+              "    pm.response.to.have.jsonBody('eyeColor');",
+              "    pm.response.to.have.jsonBody('hair.color');",
+              "    pm.response.to.have.jsonBody('hair.type');",
+              "    pm.response.to.have.jsonBody('address.country');",
+              "    pm.response.to.have.jsonBody('company.address.country');",
+              "    pm.response.to.have.jsonBody('crypto.coin');",
+              "    pm.response.to.have.jsonBody('crypto.network');",
+              "    pm.response.to.have.jsonBody('role');",
+              "    pm.response.to.have.jsonBody('university');",
+              "    pm.response.to.have.jsonBody('bank.cardNumber');",
+              "    pm.response.to.have.jsonBody('bank.cardType');",
+              "    pm.response.to.have.jsonBody('bank.currency');",
+              "    pm.response.to.have.jsonBody('bank.iban');",
+              "    pm.response.to.have.jsonBody('company.address.stateCode');",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{accessToken}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/me",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "me"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET current user (missing token)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Status is 401    ",
+              "pm.test(\"Status is 401\", function () {",
+              "    pm.response.to.have.status(401);",
+              "});",
+              "",
+              "// Body contains error message \"Access Token is required\"",
+              "pm.test(\"Response body contains error message\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"Access Token is required\");",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/me",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "me"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET current user (invalid token)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Status is 401    ",
+              "pm.test(\"Status is 401\", function () {",
+              "    pm.response.to.have.status(401);",
+              "});",
+              "",
+              "// Response body contains \"Invalid/Expired Token!\"",
+              "pm.test(\"Response body contains 'Invalid/Expired Token!'\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"Invalid/Expired Token!\");",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer abc",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/me",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "me"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "accessToken",
+      "value": ""
+    },
+    {
+      "key": "base_url",
+      "value": ""
+    },
+    {
+      "key": "refreshToken",
+      "value": ""
+    }
+  ]
+}

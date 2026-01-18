@@ -4,7 +4,7 @@
 
 **Method:** GET
 
-**Endpoint:** https://dummyjson.com/auth/me
+**Endpoint:** /auth/me
 
 **Preconditions:**
 
@@ -33,7 +33,7 @@
 
 **Method:** GET
 
-**Endpoint:** https://dummyjson.com/auth/me
+**Endpoint:** /auth/me
 
 **Preconditions:** API is available.
 
@@ -55,7 +55,7 @@
 
 **Method:** GET
 
-**Endpoint:** https://dummyjson.com/auth/me
+**Endpoint:** /auth/me
 
 **Preconditions:** API is available.
 
