@@ -371,7 +371,7 @@
   "variable": [
     {
       "key": "base_url",
-      "value": ""
+      "value": "https://api.open-meteo.com"
     }
   ]
 }
