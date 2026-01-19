@@ -11,15 +11,17 @@ Core CRUD + state transitions: add, complete, edit, delete/clear, filter, search
 ### TC-TODO-001 — Add a task via button
 
 **Preconditions:** App loaded, list visible.
+
 **Steps:**
 
 1. Type "Buy milk" in task input.
 2. Click Add / Submit.
-   **Expected:**
+
+**Expected:**
 
 - New task appears in the list.
 - Task text is exactly "Buy milk".
-- Input clears (or cursor stays ready for next task).
+- Input clears.
 
 ### TC-TODO-002 — Add a task via Enter key
 
@@ -27,7 +29,8 @@ Core CRUD + state transitions: add, complete, edit, delete/clear, filter, search
 
 1. Type "Walk dog".
 2. Press Enter.
-   **Expected:** Task is added as in TC-TODO-001.
+
+**Expected:** Task is added as in TC-TODO-001.
 
 ### TC-TODO-003 — Reject empty task
 
@@ -35,10 +38,10 @@ Core CRUD + state transitions: add, complete, edit, delete/clear, filter, search
 
 1. Ensure input is empty.
 2. Click Add / press Enter.
-   **Expected:**
+
+**Expected:**
 
 - No task is added.
-- Optional: validation message shown.
 
 ### TC-TODO-004 — Reject whitespace-only task
 
@@ -46,20 +49,21 @@ Core CRUD + state transitions: add, complete, edit, delete/clear, filter, search
 
 1. Type " " (spaces).
 2. Submit.
-   **Expected:**
 
-- No task added (or task is trimmed to empty and rejected).
+**Expected:**
+
+- No task added.
 
 ### TC-TODO-005 — Trim leading/trailing spaces
 
 **Steps:**
 
-1. Type "Pay bills"
+1. Type " Pay bills "
 2. Submit.
-   **Expected:**
 
-- Task text saved as "Pay bills" (if you trim).
-- If you don’t trim, document current behavior.
+**Expected:**
+
+- Task text saved as "Pay bills".
 
 ---
 
@@ -68,20 +72,23 @@ Core CRUD + state transitions: add, complete, edit, delete/clear, filter, search
 ### TC-TODO-006 — Mark task as completed
 
 **Preconditions:** At least one task exists.
+
 **Steps:**
 
-1. Toggle completion checkbox (or click complete control) on a task.
-   **Expected:**
+1. Toggle completion checkbox on a task.
+
+**Expected:**
 
 - Task shows completed styling/state.
-- Completed count updates (if you show counts).
+- Completed count updates.
 
 ### TC-TODO-007 — Un-complete a completed task
 
 **Steps:**
 
 1. Toggle the same task again.
-   **Expected:**
+
+**Expected:**
 
 - Task returns to active state.
 - Counts update correctly.
@@ -89,12 +96,14 @@ Core CRUD + state transitions: add, complete, edit, delete/clear, filter, search
 ### TC-TODO-008 — Edit task text successfully
 
 **Preconditions:** Task exists.
+
 **Steps:**
 
 1. Trigger edit (edit button / double click / prompt).
 2. Change text to "Buy oat milk".
 3. Save/confirm.
-   **Expected:**
+
+**Expected:**
 
 - Task text updates.
 - Completion state unchanged.
@@ -105,7 +114,8 @@ Core CRUD + state transitions: add, complete, edit, delete/clear, filter, search
 
 1. Start edit.
 2. Cancel (Esc / Cancel button / close prompt).
-   **Expected:** Original text remains.
+
+**Expected:** Original text remains.
 
 ### TC-TODO-010 — Reject edit to empty/whitespace
 
@@ -114,11 +124,10 @@ Core CRUD + state transitions: add, complete, edit, delete/clear, filter, search
 1. Start edit.
 2. Replace text with empty / spaces.
 3. Save.
-   **Expected:** Either:
 
-- edit rejected and original text remains, OR
-- task deleted (if that’s your design).
-  Document actual behavior.
+**Expected:**
+
+- Edit rejected and original text remains.
 
 ---
 
@@ -127,10 +136,12 @@ Core CRUD + state transitions: add, complete, edit, delete/clear, filter, search
 ### TC-TODO-011 — Delete a single task
 
 **Preconditions:** Task exists.
+
 **Steps:**
 
 1. Click delete/remove on one task.
-   **Expected:**
+
+**Expected:**
 
 - Task disappears.
 - Counts update.
@@ -138,10 +149,12 @@ Core CRUD + state transitions: add, complete, edit, delete/clear, filter, search
 ### TC-TODO-012 — Clear completed removes only completed tasks
 
 **Preconditions:** One completed, one active.
+
 **Steps:**
 
 1. Click “Clear completed”.
-   **Expected:**
+
+**Expected:**
 
 - Completed tasks removed.
 - Active tasks remain.
@@ -149,64 +162,95 @@ Core CRUD + state transitions: add, complete, edit, delete/clear, filter, search
 ### TC-TODO-013 — Clear all removes all tasks
 
 **Preconditions:** Multiple tasks exist.
+
 **Steps:**
 
 1. Click “Clear all”.
-   **Expected:** List is empty.
+
+**Expected:** List is empty.
 
 ---
 
-## Filter (if you have filters)
+## Filter
 
 ### TC-TODO-014 — Filter: Active shows only active tasks
 
 **Preconditions:** One active + one completed.
+
 **Steps:**
 
 1. Set filter to Active.
-   **Expected:** Only active tasks shown.
+
+**Expected:** Only active tasks shown.
 
 ### TC-TODO-015 — Filter: Completed shows only completed tasks
 
 **Steps:**
 
 1. Set filter to Completed.
-   **Expected:** Only completed tasks shown.
+
+**Expected:** Only completed tasks shown.
 
 ### TC-TODO-016 — Filter: All shows all tasks
 
 **Steps:**
 
 1. Set filter to All.
-   **Expected:** Both active and completed shown.
+
+**Expected:** Both active and completed shown.
 
 ---
 
-## Search (if you have search)
+## Search
 
 ### TC-TODO-017 — Search is case-insensitive and partial match
 
 **Preconditions:** Tasks: "Buy milk", "Walk dog".
+
 **Steps:**
 
 1. Search "MIL".
-   **Expected:** "Buy milk" is shown.
+
+**Expected:** "Buy milk" is shown.
 
 ### TC-TODO-018 — Empty search shows full list
 
 **Steps:**
 
 1. Clear search input.
-   **Expected:** Full list returns.
+
+**Expected:** Full list returns.
 
 ---
 
-## Sort (if you have sort)
+## Sort
 
 ### TC-TODO-019 — Sort by created date
 
 **Preconditions:** Two tasks created in order.
+
 **Steps:**
 
 1. Set sort to “created asc/desc” (or your equivalent).
-   **Expected:** Ordering changes correctly and consistently.
+
+**Expected:** Ordering changes correctly and consistently.
+
+## Test Run Summary — Odin Todo (Manual UI)
+
+- **Date:** 2026-01-19
+
+- **Environment:** macOS 15.7.3 (24G419), MacBook Pro (arm64)
+
+- **Browser:** Chrome 144.0.7559.60 (Official Build) (arm64)
+
+- **Scope:** Manual UI test execution for Odin Todo app.
+
+- **Out of Scope:** Backend tests, performance/load testing, accessibility audit, cross-browser testing.
+
+- **Total Test Cases:** 19
+
+- **Passed:** 19
+
+- **Failed:** 0
+
+- **Notes:** No defects found during this test run.
