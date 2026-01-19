@@ -1,23 +1,30 @@
-# Postman API Testing Collection
+# API Testing Exercise — DummyJSON (Postman)
 
-This folder contains an exported Postman collection used for manual API testing practice.
+## Goal
+
+Practice API testing in Postman: request design, assertions, variables, and negative cases using the DummyJSON public API.
 
 ## Contents
 
-- API Testing Fundamentals collection
-- Requests include:
-  - GET endpoints
-  - POST endpoints
-  - Negative test cases
-  - Authentication and authorized requests
+- Postman collection: "./DummyJSON.postman_collection.json"
+- Postman collection: "./JSONPlaceholder.postman_collection.json"
+- Test notes / cases: "./test-cases"
 
-## How to use
+## How to run
 
-1. Import the JSON collection into Postman.
-2. Create or select an environment with:
-   - baseUrl
-   - accessToken (initially empty)
-3. Run the login request to populate accessToken.
-4. Run authorized requests.
+1. Import the collection:
 
-This collection is intended for manual execution and learning purposes.
+   - Postman → Import → select "DummyJSON.postman_collection.json" or "JSONPlaceholder.postman_collection.json"
+
+2. Collection variables
+
+- "base_url" = set in Collection → Variables
+
+3. Run
+
+- Use Collection Runner (recommended) or send requests manually.
+
+## Notes
+
+- No authentication required.
+- Tests cover typical flows: list, single resource, invalid id, status code checks, basic schema checks.
