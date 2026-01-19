@@ -1,20 +1,43 @@
-# Manual QA Portfolio
+# Manual QA Practice
 
-This repository contains hands-on manual QA practice artifacts created during training.
+A structured repository for **manual QA work**: test design, execution, bug reporting, and API testing (Postman).
 
-## What this repository demonstrates
+Each project has its own folder with clear artifacts.
 
-- Manual test case design and execution
-- Bug reporting with clear reproduction steps
-- Exploratory testing and defect discovery
-- API testing using Postman (GET, POST, negative cases, auth)
-- Understanding of HTTP, status codes, and backend validation
+---
 
-## Structure
+## Repo structure
 
-- projects/ — Odin Projects UI test cases, plans and bug reports
-- training-manual-testing/ — Training UI test cases, execution logs, bug reports
-- training-api-testing/ — Training API test cases, execution logs, Postman collections
-- training-test-plans/ — Training high-level test planning examples
+- **"projects/"** → QA artifacts for real apps
+- **"exercises/"** → smaller drills and course-style practice
 
-All artifacts are written manually and executed against demo applications and public APIs.
+---
+
+### Current projects
+
+- **Odin Weather**
+
+  - Manual UI test cases + executed test run summary
+  - API test cases + Postman collection + executed run summary
+
+- **Odin Todo**
+
+  - Manual UI test cases (and bug reports)
+
+---
+
+## Exercises
+
+Course/practice work that is not tied to a specific app:
+
+- API testing drills (public APIs like DummyJSON / JSONPlaceholder)
+- Test design exercises (equivalence partitions, boundary values, etc.)
+
+---
+
+## How to use
+
+- Browse **"projects/"** for the most relevant portfolio work.
+- Browse **"exercises/"** for supporting practice artifacts.
+
+---
