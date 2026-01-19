@@ -1,22 +1,22 @@
-# Odin Weather – API Test Cases
+# Odin Weather – API test cases
 
 ## Geocoding API
 
 ### TC-API-GEO-001 – Valid city returns at least one result
 
-**Endpoint:** `GET /v1/search`
+**Endpoint:** "GET /v1/search"
 
 **Purpose:** Verify that a valid city name returns a non-empty result set.
 
 **Preconditions:**
 
 - API is reachable.
-- `name` parameter is set to a real city (e.g. `Plovdiv`).
+- "name" parameter is set to a real city (e.g. "Plovdiv").
 
 **Request:**
 
 - Method: GET
-- URL: `/v1/search?name=Plovdiv&count=1`
+- URL: "/v1/search?name=Plovdiv&count=1"
 
 **Steps:**
 
@@ -24,17 +24,17 @@
 
 **Expected result:**
 
-- Status code is `200`.
-- Response body contains a `results` array.
-- `results.length >= 1`.
+- Status code is "200".
+- Response body contains a "results" array.
+- "results.length >= 1".
 - First result has at least:
-  - `name` (string, non-empty)
-  - `latitude` (number)
-  - `longitude` (number).
+  - "name" (string, non-empty)
+  - "latitude" (number)
+  - "longitude" (number).
 
 ### TC-API-GEO-002 – Unknown/invalid city returns no results
 
-**Endpoint:** `GET /v1/search`
+**Endpoint:** "GET /v1/search"
 
 **Purpose:** Verify behavior when an unknown city is requested.
 
@@ -45,7 +45,7 @@
 **Request:**
 
 - Method: GET
-- URL: `/v1/search?name=asdkjashdkjashd&count=5`
+- URL: "/v1/search?name=asdkjashdkjashd&count=5"
 
 **Steps:**
 
@@ -53,15 +53,13 @@
 
 **Expected result:**
 
-- Status code is `200` (or appropriate success code per API docs).
-- `results` is either:
-  - an empty array, or
-  - missing / null with a dedicated flag indicating "no results".
+- Status code is "200".
+- "results" array is missing.
 - No error is returned.
 
-### TC-API-GEO-003 – Missing required parameter `name`
+### TC-API-GEO-003 – Missing required parameter "name"
 
-**Endpoint:** `GET /v1/search`
+**Endpoint:** "GET /v1/search"
 
 **Purpose:** Verify API validation when required parameter is missing.
 
@@ -72,7 +70,7 @@
 **Request:**
 
 - Method: GET
-- URL: `/v1/search?count=1` (no `name` query param)
+- URL: "/v1/search?count=1" (no "name" query param)
 
 **Steps:**
 
@@ -80,24 +78,24 @@
 
 **Expected result:**
 
-- Status code is a client error (e.g. `400` or `422`) **or** a valid 200 with clear error message (depending on API spec).
-- Response contains an error description indicating missing or invalid `name` parameter.
+- Status code is "400".
+- Response contains an error description indicating missing or invalid "name" parameter.
 
 ### TC-API-GEO-004 – Multiple results when city name is ambiguous
 
-**Endpoint:** `GET /v1/search`
+**Endpoint:** "GET /v1/search"
 
 **Purpose:** Verify that ambiguous city names return multiple candidates.
 
 **Preconditions:**
 
 - API is reachable.
-- Selected city name exists in multiple locations (e.g. `Springfield`, `Sofia` with different countries depending on API).
+- Selected city name exists in multiple locations (e.g. "Springfield", "Sofia" with different countries depending on API).
 
 **Request:**
 
 - Method: GET
-- URL: `/v1/search?name=Springfield&count=10`
+- URL: "/v1/search?name=Springfield&count=10"
 
 **Steps:**
 
@@ -105,13 +103,13 @@
 
 **Expected result:**
 
-- Status code is `200`.
-- `results.length >= 2` (if such city is known to have multiple matches).
+- Status code is "200".
+- "results.length >= 2" (if such city is known to have multiple matches).
 - Each result has at least:
-  - `name`
-  - `country`
-  - `latitude`
-  - `longitude`.
+  - "name"
+  - "country"
+  - "latitude"
+  - "longitude".
 
 ---
 
@@ -119,7 +117,7 @@
 
 ### TC-API-FORECAST-001 – Valid coordinates return current weather
 
-**Endpoint:** `GET /v1/forecast`
+**Endpoint:** "GET /v1/forecast"
 
 **Purpose:** Verify that valid coordinates return current weather data.
 
@@ -131,7 +129,7 @@
 **Request:**
 
 - Method: GET
-- URL: `/v1/forecast?latitude=42.1354&longitude=24.7453&current_weather=true`
+- URL: "/v1/forecast?latitude=42.1354&longitude=24.7453&current_weather=true"
 
 **Steps:**
 
@@ -139,17 +137,17 @@
 
 **Expected result:**
 
-- Status code is `200`.
-- Response includes a `current_weather` object.
-- `current_weather` contains at least:
-  - `temperature` (number)
-  - `windspeed` (number)
-  - `weathercode` or equivalent condition field.
+- Status code is "200".
+- Response includes a "current_weather" object.
+- "current_weather" contains at least:
+  - "temperature" (number)
+  - "windspeed" (number)
+  - "weathercode" or equivalent condition field.
 
 ### TC-API-FORECAST-002 – Missing latitude parameter
 
-**Endpoint:** `GET /v1/forecast`  
-**Purpose:** Verify behavior when `latitude` is missing.
+**Endpoint:** "GET /v1/forecast"  
+**Purpose:** Verify behavior when "latitude" is missing.
 
 **Preconditions:**
 
@@ -158,7 +156,7 @@
 **Request:**
 
 - Method: GET
-- URL: `/v1/forecast?longitude=24.7453&current_weather=true`
+- URL: "/v1/forecast?longitude=24.7453&current_weather=true"
 
 **Steps:**
 
@@ -166,14 +164,14 @@
 
 **Expected result:**
 
-- Status code is a client error (e.g. `400` or `422`), or explicit error response according to API spec.
-- Error message indicates missing/invalid `latitude` parameter.
-- No `current_weather` data is returned.
+- Status code is "400".
+- Error message indicates missing/invalid "latitude" parameter.
+- No "current_weather" data is returned.
 
 ### TC-API-FORECAST-003 – Missing longitude parameter
 
-**Endpoint:** `GET /v1/forecast`  
-**Purpose:** Verify behavior when `longitude` is missing.
+**Endpoint:** "GET /v1/forecast"  
+**Purpose:** Verify behavior when "longitude" is missing.
 
 **Preconditions:**
 
@@ -182,7 +180,7 @@
 **Request:**
 
 - Method: GET
-- URL: `/v1/forecast?latitude=42.1354&current_weather=true`
+- URL: "/v1/forecast?latitude=42.1354&current_weather=true"
 
 **Steps:**
 
@@ -190,13 +188,13 @@
 
 **Expected result:**
 
-- Status code is a client error (e.g. `400` or `422`), or explicit error response according to API spec.
-- Error message indicates missing/invalid `longitude` parameter.
-- No `current_weather` data is returned.
+- Status code is "400".
+- Error message indicates missing/invalid "longitude" parameter.
+- No "current_weather" data is returned.
 
 ### TC-API-FORECAST-004 – Latitude out of valid range
 
-**Endpoint:** `GET /v1/forecast`  
+**Endpoint:** "GET /v1/forecast"  
 **Purpose:** Verify validation for latitude range.
 
 **Preconditions:**
@@ -206,7 +204,7 @@
 **Request:**
 
 - Method: GET
-- URL: `/v1/forecast?latitude=999&longitude=24.7453&current_weather=true`
+- URL: "/v1/forecast?latitude=999&longitude=24.7453&current_weather=true"
 
 **Steps:**
 
@@ -214,25 +212,25 @@
 
 **Expected result:**
 
-- Status code is a client error (e.g. `400` or `422`), or explicit error response according to API spec.
+- Status code is "400".
 - Response indicates invalid latitude range.
 - No valid forecast data is returned.
 
 ### TC-API-FORECAST-005 – Daily forecast returns requested number of days
 
-**Endpoint:** `GET /v1/forecast`  
-**Purpose:** Verify that the `days` or `forecast_days` parameter limits the number of returned days.
+**Endpoint:** "GET /v1/forecast"  
+**Purpose:** Verify that the "days" or "forecast_days" parameter limits the number of returned days.
 
 **Preconditions:**
 
 - API is reachable.
-- The forecast endpoint supports a parameter to control number of forecast days (e.g. `forecast_days`, `days`, `daily=...` + `timezone=...`).
+- The forecast endpoint supports a parameter to control number of forecast days (e.g. "forecast_days", "days", "daily=..." + "timezone=...").
 
 **Request:**
 
 - Method: GET
-- Example URL (adapt to actual API):
-  - `/v1/forecast?latitude=42.1354&longitude=24.7453&daily=temperature_2m_max&forecast_days=3`
+- Example URL:
+  - "/v1/forecast?latitude=42.1354&longitude=24.7453&daily=temperature_2m_max&forecast_days=3"
 
 **Steps:**
 
@@ -240,26 +238,25 @@
 
 **Expected result:**
 
-- Status code is `200`.
-- Response includes a `daily` object.
-- `daily.time` (or equivalent date array) has length `3`.
-- Each element has a corresponding `temperature_2m_max` value.
+- Status code is "200".
+- Response includes a "daily" object.
+- "daily.time" (or equivalent date array) has length "3".
 
 ### TC-API-FORECAST-006 – Timezone handling
 
-**Endpoint:** `GET /v1/forecast`
+**Endpoint:** "GET /v1/forecast"
 
 **Purpose:** Verify that specifying a timezone parameter affects the returned timezone field.
 
 **Preconditions:**
 
 - API is reachable.
-- Forecast endpoint supports `timezone` parameter.
+- Forecast endpoint supports "timezone" parameter.
 
 **Request:**
 
 - Method: GET
-- URL (example): `/v1/forecast?latitude=42.1354&longitude=24.7453&current_weather=true&timezone=Europe/Sofia`
+- URL (example): "/v1/forecast?latitude=42.1354&longitude=24.7453&current_weather=true&timezone=Europe/Sofia"
 
 **Steps:**
 
@@ -267,6 +264,5 @@
 
 **Expected result:**
 
-- Status code is `200`.
-- Response field `timezone` equals `Europe/Sofia` (or equivalent).
-- `utc_offset_seconds` is consistent with the requested timezone (not mandatory to check in detail, but can be noted).
+- Status code is "200".
+- Response field "timezone" equals "Europe/Sofia" (or equivalent).
