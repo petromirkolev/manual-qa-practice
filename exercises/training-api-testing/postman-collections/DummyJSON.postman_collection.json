@@ -53,13 +53,8 @@
         },
         "url": {
           "raw": "{{base_url}}/auth/login",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "auth",
-            "login"
-          ]
+          "host": ["{{base_url}}"],
+          "path": ["auth", "login"]
         }
       },
       "response": []
@@ -104,13 +99,8 @@
         },
         "url": {
           "raw": "{{base_url}}/auth/login",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "auth",
-            "login"
-          ]
+          "host": ["{{base_url}}"],
+          "path": ["auth", "login"]
         }
       },
       "response": []
@@ -153,13 +143,8 @@
         },
         "url": {
           "raw": "{{base_url}}/auth/login",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "auth",
-            "login"
-          ]
+          "host": ["{{base_url}}"],
+          "path": ["auth", "login"]
         }
       },
       "response": []
@@ -230,13 +215,8 @@
         },
         "url": {
           "raw": "{{base_url}}/auth/me",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "auth",
-            "me"
-          ]
+          "host": ["{{base_url}}"],
+          "path": ["auth", "me"]
         }
       },
       "response": []
@@ -279,13 +259,8 @@
         },
         "url": {
           "raw": "{{base_url}}/auth/me",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "auth",
-            "me"
-          ]
+          "host": ["{{base_url}}"],
+          "path": ["auth", "me"]
         }
       },
       "response": []
@@ -331,13 +306,8 @@
         },
         "url": {
           "raw": "{{base_url}}/auth/me",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "auth",
-            "me"
-          ]
+          "host": ["{{base_url}}"],
+          "path": ["auth", "me"]
         }
       },
       "response": []
@@ -350,9 +320,7 @@
         "type": "text/javascript",
         "packages": {},
         "requests": {},
-        "exec": [
-          ""
-        ]
+        "exec": [""]
       }
     },
     {
@@ -361,9 +329,7 @@
         "type": "text/javascript",
         "packages": {},
         "requests": {},
-        "exec": [
-          ""
-        ]
+        "exec": [""]
       }
     }
   ],
@@ -374,7 +340,7 @@
     },
     {
       "key": "base_url",
-      "value": ""
+      "value": "https://dummyjson.com"
     },
     {
       "key": "refreshToken",
