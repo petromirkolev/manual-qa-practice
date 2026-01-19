@@ -2,7 +2,7 @@
 
 ## Goal
 
-Practice API testing in Postman: request design, assertions, variables, and negative cases using the DummyJSON public API.
+Practice API testing in Postman: request design, assertions, variables, and negative cases using the DummyJSON and JSONPlaceholder public API.
 
 ## Contents
 
