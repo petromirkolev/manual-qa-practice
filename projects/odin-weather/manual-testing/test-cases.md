@@ -99,7 +99,7 @@
 
 - No crash.
 
-### TC-WE-009 – Country bias if supported
+### TC-WE-009 – Country bias
 
 **Steps:**
 
@@ -220,3 +220,23 @@
 
 - No stale weather displayed.
 - No errors shown by default.
+
+## Test Run Summary — Odin Weather (Manual UI)
+
+- **Date:** 2026-01-19
+
+- **Environment:** macOS 15.7.3 (24G419), MacBook Pro (arm64)
+
+- **Browser:** Chrome 144.0.7559.60 (Official Build) (arm64)
+
+- **Scope:** Manual UI test execution for Odin Weather app (city search, results rendering, units behavior, input validation, and error handling scenarios as documented in this file).
+
+- **Out of Scope:** Backend/internal API unit tests, performance/load testing, accessibility audit, cross-browser testing.
+
+- **Total Test Cases:** 17
+
+- **Passed:** 17
+
+- **Failed:** 0
+
+- **Notes:** All executed test cases passed with expected behavior observed.
