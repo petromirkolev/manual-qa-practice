@@ -1,0 +1,274 @@
+{
+  "info": {
+    "_postman_id": "d404b802-146e-4d09-8cde-cd6e7c6303a9",
+    "name": "Geocode API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14026585"
+  },
+  "item": [
+    {
+      "name": "Get a valid city",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Response code is 200",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Body contains \"results\" array",
+              "pm.test(\"Response body contains 'results' array\", function () { ",
+              "    pm.expect(pm.response.json()).to.have.property('results');",
+              "});",
+              "",
+              "// \"results\" array contains at least one element",
+              "pm.test(\"Results array contains at least one element\", function () {",
+              "    pm.expect(pm.response.json().results).to.have.lengthOf.at.least(1);",
+              "});",
+              "",
+              "// First result nas name",
+              "pm.test(\"First result has name 'Plovdiv'\", function () {",
+              "    pm.expect(pm.response.json().results[0].name).to.eql(\"Plovdiv\");",
+              "});",
+              "",
+              "// First result has latitude",
+              "pm.test(\"First result has latitude\", function () {",
+              "    pm.expect(pm.response.json().results[0].latitude).to.eql(42.15);",
+              "});",
+              "",
+              "// First result has longitude",
+              "pm.test(\"First result has longitude\", function () {",
+              "    pm.expect(pm.response.json().results[0].longitude).to.eql(24.75);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/v1/search?name=Plovdiv&count=1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Plovdiv"
+            },
+            {
+              "key": "count",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get an invalid city",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Response code is 200",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// No error is returned",
+              "pm.test(\"No error is returned\", function () {",
+              "    pm.expect(pm.response.json().error).to.not.exist;",
+              "});",
+              "",
+              "// Result does not contain results array",
+              "pm.test(\"No results are returned\", function () {",
+              "    pm.expect(pm.response.json().results).to.not.exist;",
+              "}); ",
+              "",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/v1/search?name=asdkjashdkjashd&count=5",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "asdkjashdkjashd"
+            },
+            {
+              "key": "count",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get a missing param city",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Response code is 400",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Response body contains clear error message",
+              "pm.test(\"Response body contains error message\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"No value found (expected type 'String')\");",
+              "});",
+              "",
+              "// Response body provides error flag",
+              "pm.test(\"Response body contains error flag\", function () {",
+              "    pm.expect(pm.response.json().error).to.be.true;",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/v1/search?count=1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "count",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get an ambiguous city name",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Response code is 200",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Results length >= 2 (if such city is known to have multiple matches)",
+              "pm.test(\"Number of results is at least 2\", function () {",
+              "    pm.expect(pm.response.json().results.length).to.be.at.least(2);",
+              "});",
+              "",
+              "// Each result has at least name, country, latitude, longitude",
+              "pm.test(\"Each result has required fields\", function () {",
+              "    pm.response.json().results.forEach(function (result) {",
+              "        pm.expect(result).to.have.property(\"name\");",
+              "        pm.expect(result).to.have.property(\"country\");",
+              "        pm.expect(result).to.have.property(\"latitude\");",
+              "        pm.expect(result).to.have.property(\"longitude\");",
+              "    });",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/v1/search?name=Springfield&count=10",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Springfield"
+            },
+            {
+              "key": "count",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    }
+  ]
+}

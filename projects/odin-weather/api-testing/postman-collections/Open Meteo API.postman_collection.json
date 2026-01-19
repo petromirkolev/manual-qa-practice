@@ -1,0 +1,110 @@
+{
+  "info": {
+    "_postman_id": "bc9cd99c-af37-4af4-80dc-daa9ef807788",
+    "name": "Open Meteo API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14026585"
+  },
+  "item": [
+    {
+      "name": "Get valid coords",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Response code is 200",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Response includes a current weather object",
+              "pm.test(\"Response includes a current weather object\", function () {",
+              "    pm.response.to.have.jsonSchema({",
+              "        \"type\": \"object\",",
+              "        \"properties\": {",
+              "            \"current_weather\": {}",
+              "        },",
+              "        \"required\": [\"current_weather\"]",
+              "    });",
+              "}); ",
+              "",
+              "// Current weather contains temperature, wind speed, and weather code",
+              "pm.test(\"Current weather object contains necessary properties\", function () {",
+              "    pm.expect(pm.response.json().current_weather).to.have.property(\"temperature\");",
+              "    pm.expect(pm.response.json().current_weather).to.have.property(\"windspeed\");",
+              "    pm.expect(pm.response.json().current_weather).to.have.property(\"weathercode\");",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/v1/forecast?latitude=42.1354&longitude=24.7453&current_weather=true",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "forecast"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "42.1354"
+            },
+            {
+              "key": "longitude",
+              "value": "24.7453"
+            },
+            {
+              "key": "current_weather",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
