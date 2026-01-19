@@ -1,4 +1,4 @@
-# API Testing Exercise — DummyJSON (Postman)
+# API Testing Exercise
 
 ## Goal
 
